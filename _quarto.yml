@@ -1,0 +1,21 @@
+project:
+  type: book
+book:
+  title: "*Statistical Rethinking* with brms, ggplot2, and the tidyverse: Second edition"
+  subtitle: "version 0.3.0"
+  author: "A Solomon Kurz"
+  date: 2023-01-08
+  chapters:
+    - index.qmd
+    - 01.qmd
+    - 02.qmd
+    - 03.qmd
+    - 99.qmd
+    
+bibliography: bib.bib
+format:
+  html:
+    theme: cosmo
+    
+execute: 
+  freeze: auto
