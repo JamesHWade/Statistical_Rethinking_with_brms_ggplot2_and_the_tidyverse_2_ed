@@ -19,7 +19,7 @@ Great! I'm guessing most contributions will fall under:
 * responding to requests for help either in the [GitHub issues](https://github.com/ASKurz/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse_2_ed/issues) section or in the ebook itself (e.g., [here](https://github.com/ASKurz/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse/issues/3)); or
 * requesting features.
 
-I generally prefer people use the [GitHub issues](https://github.com/ASKurz/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse_2_ed/issues) for these. However, it's okay if you would like to make a pull request. Beware that PR's tend to make me nervous and I'm more likely to avoid them in favor of responding to the issues. Sometimes it makes sense to correspond with me by email, but I ask you use that as a last option.
+I generally prefer people use the [GitHub issues](https://github.com/ASKurz/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse_2_ed/issues) for these or pull requests.
 
 ## Code style
 
@@ -27,6 +27,4 @@ I generally follow the recommendations in [*The tidyverse style guide*](https://
 
 ## Credit
 
-I make it a practice to thank my contributors in the `index.Rmd` files of all my ebooks. You can find the list in the current version at [https://bookdown.org/content/4857/#thank-yous-are-in-order](https://bookdown.org/content/4857/#thank-yous-are-in-order). If your contribution ends up in the ebook, I'll happily add your name and GitHub handle to the list. If for some reason you don't want to be added to the list, please let me know and I'll respect your privacy. 
-
-Every once in a while, someone helps with a substantial contribution. In those cases, I like to give shout outs right in the body of the text. For example Louis Bliard and Richard Torkar were major contributors to solving the Gaussian process models in [Section 14.5.1](https://bookdown.org/content/4857/adventures-in-covariance.html#example-spatial-autocorrelation-in-oceanic-tools.). Just like my stance for smaller contributions, I'm happy to leave your name out of the text if you prefer your privacy.
+I want to thank all contributors in the `index.Rmd` files of all my books. If your contribution ends up in the ebook, I'll happily add your name and GitHub handle to the list. If for some reason you don't want to be added to the list, please let me know, and I'll respect your privacy. 
