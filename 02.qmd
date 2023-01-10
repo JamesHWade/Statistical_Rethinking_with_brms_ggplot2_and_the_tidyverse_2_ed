@@ -20,6 +20,22 @@ McElreath described the thrust of this chapter this way:
 
 Indeed.
 
+## Course Materials {.unnumbered}
+
+### Lecture {.unnumbered}
+
+<center>
+
+<iframe width="600" height="350" src="https://www.youtube.com/embed/R1vcdhPBlXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+</iframe>
+
+</center>
+
+### Slides {.unnumbered}
+
+![](static/02_Lecture-Slides_The-Garden-of-Forking-Data.pdf){width="600" height="400" fig-align="center"}
+
 ## The garden of forking data
 
 Gelman and Loken [-@gelmanGardenForkingPaths2013] wrote a [great paper of a similar name](https://stat.columbia.edu/~gelman/research/unpublished/p_hacking.pdf) and topic. The titles from this section and Gelman and Loken's paper have their origins in the short story by [Jorge Luis Borges](https://en.wikipedia.org/wiki/Jorge_Luis_Borges) [-@borgesjlJardinSenderosQue1941], *The garden of forking paths*. You can find copies of the original short story [here](https://archive.org/stream/TheGardenOfForkingPathsJorgeLuisBorges1941/The-Garden-of-Forking-Paths-Jorge-Luis-Borges-1941_djvu.txt) or [here](https://genius.com/Jorge-luis-borges-the-garden-of-forking-paths-annotated).
