@@ -25,10 +25,10 @@ This project is not meant as a stand alone book. It's a supplement to the second
 
 I reproduce the bulk of the figures in the text, too. The plots in the first few chapters are the closest to those in the text. Kurz is passionate about data visualization and liked to play around with [color palettes](https://github.com/EmilHvitfeldt/r-color-palettes), formatting templates, and other conventions quite a bit. As a result, the plots in each chapter have their own look and feel. For more on some of these topics, check out:
 
--  chapters on [data visualization](https://r4ds.hadley.nz/visualize.html) and [exploratory data analysis](https://r4ds.hadley.nz/eda) in *R4DS*
--  Healy's [*Data visualization: A practical introduction*](https://socviz.co) [-@healyDataVisualization2018]
--  Wilke's [*Fundamentals of data visualization*](https://serialmentor.com/dataviz/) [-@wilkeFundamentalsDataVisualization2019]
--  Wickham's [*ggplot2: Elegant graphics for data analysis*](https://ggplot2-book.org/) [-@wickhamGgplot2ElegantGraphics2016]
+-   chapters on [data visualization](https://r4ds.hadley.nz/visualize.html) and [exploratory data analysis](https://r4ds.hadley.nz/eda) in *R4DS*
+-   Healy's [*Data visualization: A practical introduction*](https://socviz.co) [-@healyDataVisualization2018]
+-   Wilke's [*Fundamentals of data visualization*](https://serialmentor.com/dataviz/) [-@wilkeFundamentalsDataVisualization2019]
+-   Wickham's [*ggplot2: Elegant graphics for data analysis*](https://ggplot2-book.org/) [-@wickhamGgplot2ElegantGraphics2016]
 
 In this project, I use a handful of formatting conventions gleaned from [*R4DS*](https://r4ds.had.co.nz/introduction.html#running-r-code), [*The tidyverse style guide*](https://style.tidyverse.org/) [@wickhamTidyverseStyleGuide2020], and [*R markdown: The definitive guide*](https://bookdown.org/yihui/rmarkdown/software-info.html) [@xieMarkdownDefinitiveGuide2020].
 

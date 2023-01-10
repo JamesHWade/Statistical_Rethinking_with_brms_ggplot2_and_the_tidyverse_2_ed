@@ -1,4 +1,4 @@
 - source: project
   quarto-pub:
     - id: 9983acc6-f4be-45f4-a638-bb9e24f73a5d
-      url: 'https://quartopub.com/sites/jameshwade/statistical-rethinking-with-brms-ggplot2-and-the-tidyverse-second-edition'
+      url: 'https://quartopub.com/sites/jameshwade/statistical-rethinking-with-tidymodels'

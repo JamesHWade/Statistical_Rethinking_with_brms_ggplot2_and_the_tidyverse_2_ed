@@ -5,6 +5,9 @@ execute:
   warning: false
   message: false
 fig-align: "center"
+code-fold: true
+code-tools: true
+code-summary: "Show the Code"
 width: 100
 bibliography: references.bib
 ---
@@ -32,6 +35,7 @@ The choices we make in our data analyses proliferate and fork in this way, too.
 Throughout this project, we'll make extensive use packages from the [**tidyverse**](https://www.tidyverse.org) for data wrangling and plotting. For tables, we'll use [**gt**](https://gt.rstudio.com/). Much like **ggplot2**, **gt**'s philosophy is use composable parts to create a wide variety tables.
 
 ```{r}
+#| code-fold: false
 library(tidyverse)
 library(gt)
 ```
@@ -1240,63 +1244,83 @@ Textbooks highlighting the maximum likelihood method for the generalized linear 
 
 The **brms** package uses a version of MCMC to fit Bayesian models. Since one of the main goals of this project is to highlight **brms**, we may as well fit a model. This seems like an appropriately named subsection to do so. First we'll have to load the package.
 
-```{r, warning = F, message = F}
-library(brms)
-```
-
-If you haven't already installed **brms**, you can find instructions on how to do so [here](https://github.com/paul-buerkner/brms#how-do-i-install-brms).
+This is the first time we're ursing **brms**. If you haven't already installed **brms**, you can find instructions on how to do so [here](https://github.com/paul-buerkner/brms#how-do-i-install-brms).
 
 Here we re-fit the last model from above, the one for which $w = 24$ and $n = 36$.
 
+:::{.panel-tabset}
+
+## tidymodels
+
+```{r}
+#| code-fold: false
+
+```
+
+
+## brms
+
 ```{r b2.1}
+#| code-fold: false
+library(brms)
 b2.1 <-
   brm(
     w | trials(n) ~ 0 + Intercept,
+    data = data.frame(w = 24, n = 36),
     family = binomial(link = "identity"),
     prior =  prior(beta(1, 1), class = b, lb = 0, ub = 1),
     seed = 2,
     file = "fits/b02.01"
   )
 
-
-library(parsnip)
-library(recipes)
-library(bayesian)
-library(workflows)
-library(brms)
-
-dat <- tibble(w = 24, n = 36)
-b2.1_rec <- 
-   recipe(w ~ 0, 
-          data = dat) |> 
-  step_intercept()
-
-b2.1_mod <- 
-   bayesian(# family = binomial(),
-            # formula.override =  brms::brmsformula(w | trials(n) ~ 0),
-            # prior = prior(beta(1, 1), class = b, lb = 0, ub = 1),
-            # seed = 2,
-            file = "fits/b02.01") |> 
-   set_engine("brms")
-
-b2.1_workflow <- 
-  workflow() |> 
-  add_recipe(b2.1_rec) |> 
-  add_model(b2.1_mod) |> 
-  fit(data = dat)
-
-
-# Define the data
-b2.1_data <- tibble(w = 24, trials = 36)
-
-# Define the prior
-b2.1_prior <- prior(beta(1, 1), class = "b", lb = 0, ub = 1)
-
-# Fit the model
-b2.1_fit <- 
-  b2.1_model %>%
-  fit(w ~ 1, data = b2.1_data, prior = b2.1_prior, seed = 2)
+b2.1
 ```
+
+## rethinking
+
+```{r}
+#| code-fold: false
+library(rethinking)
+m2.1 <- quap(
+  alist(
+    W ~ dbinom( W + L, p),
+    p ~ dunif(0, 1)
+  ),
+  data = list(W = 24, L = 12)
+)
+
+precis(m2.1)
+```
+
+:::
+
+<!--
+# library(parsnip)
+# library(recipes)
+# library(bayesian)
+# library(workflows)
+# library(brms)
+# 
+# dat <- tibble(w = 24, n = 36)
+# b2.1_rec <- 
+#    recipe(w ~ 0, 
+#           data = dat) |> 
+#   step_intercept()
+# 
+# b2.1_mod <- 
+#    bayesian(# family = binomial(),
+#             # formula.override =  brms::brmsformula(w | trials(n) ~ 0),
+#             # prior = prior(beta(1, 1), class = b, lb = 0, ub = 1),
+#             # seed = 2,
+#             file = "fits/b02.01") |> 
+#    set_engine("brms")
+# 
+# b2.1_workflow <- 
+#   workflow() |> 
+#   add_recipe(b2.1_rec) |> 
+#   add_model(b2.1_mod) |> 
+#   fit(data = dat)
+--->
 
 The model output from **brms** looks like so.
 

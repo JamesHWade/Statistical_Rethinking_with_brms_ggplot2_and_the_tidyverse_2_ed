@@ -1,65 +1,72 @@
 ---
-title: The Golem of Prague
+title: Science before Statistics
 always_allow_html: true
 execute: 
   freeze: auto
 fig-align: center
 ---
 
-```{r}
-#| echo: false
-#| out.width: "20%"
-#| fig.cap: "Rabbi Loew and Golem by Mikoláš Aleš, 1899"
-knitr::include_graphics("pictures/Golem_and_Loew.jpg") 
-# For the life of me, I couldn't get a hyperlink into this caption.
-# So for you real nerds, it came from here:
-# https://en.wikipedia.org/wiki/Golem#/media/File:Golem_and_Loew.jpg
-```
+[![Rabbi Loew and Golem by Mikoláš Aleš, 1899](pictures/Golem_and_Loew.jpg){fig-alt="Rabbi Loew writing instructions on the forehead of a golem" fig-align="center" width="20%"}](https://en.wikipedia.org/wiki/Golem#/media/File:Golem_and_Loew.jpg)
 
-As he opened the chapter, McElreath told us that
+McElreath opens the course much in the same way he opened the book: the legend of the Golem of Prague.
 
 > Judah was forced to destroy the golem, as its combination of extraordinary power with clumsiness eventually led to innocent deaths. Wiping away one letter from the inscription *emet* to spell instead *met*, "death," Rabbi Judah decommissioned the robot.
 >
-> ## Statistical golems {.unnumbered}
+> ## Statistical Golems {.unnumbered}
 >
-> Scientists also make golems. Our golems rarely have physical form, but they too are often made of clay, living in silicon as computer code. These golems are scientific models. But these golems have real effects on the world, through the predictions they make and the intuitions they challenge or inspire. A concern with "truth" enlivens these models, but just like a golem or a modern robot, scientific models are neither true nor false, neither prophets nor charlatans. Rather they are constructs engineered for some purpose. These constructs are incredibly powerful, dutifully conducting their programmed calculations. 
+> Scientists also make golems. Our golems rarely have physical form, but they too are often made of clay, living in silicon as computer code. These golems are scientific models. But these golems have real effects on the world, through the predictions they make and the intuitions they challenge or inspire. A concern with "truth" enlivens these models, but just like a golem or a modern robot, scientific models are neither true nor false, neither prophets nor charlatans. Rather they are constructs engineered for some purpose. These constructs are incredibly powerful, dutifully conducting their programmed calculations.
 >
 > <cite>[@mcelreathStatisticalRethinkingBayesian2020] p. 1, emphasis in the original</cite>
 
-There are a lot of great points, themes, methods, and factoids in this text. For me, one of the most powerful themes interlaced throughout the pages is how we should be skeptical of our models. Yes, learn Bayes. Pour over this book. Fit models until late into the night. But please don't fall in blind love with their elegance and power. If we all knew what we were doing, there'd be no need for science. For more wise deflation along these lines, do check out [*A personal essay on Bayes factors*](https://psyarxiv.com/nujy6), [*Between the devil and the deep blue sea: Tensions between scientific judgement and statistical model selection*](https://doi.org/10.1007/s42113-018-0019-z) [@navarroDevilDeepBlue2019] and [*Science, statistics and the problem of "pretty good inference"*](https://youtu.be/tNkmsAOn7aU), a blog, paper and talk by the inimitable [Danielle Navarro](https://djnavarro.net/).
+A most powerful theme interlaced throughout the pages is how we should be skeptical of our models. They do what they are told, so we must know what we are telling them to do.
 
-Anyway, McElreath left us no code or figures to translate in this chapter. But before you skip off to the next one, why not invest a little time soaking in this chapter's material by way of a lecture by McElreath, himself? He's an engaging speaker and the material in his online lectures does not entirely overlap with that in the text. Here's the first lecture from his Winter 2023 course:
+Yes, learn Bayes. Pour over this book. Fit models until late into the night. Do not get lost in their elegance and power. If we all knew what we were doing, there'd be no need for science. Brilliant researchers - entire fields even - can misuse or misunderstand the applicaiton of statistics to their work. We can do better.
 
-```{r, echo = F, message = F}
-vembedr::use_align(vembedr::embed_url("https://youtu.be/FdnMWdICdRs"), 
-                   "center")
-```
+For more wise deflation along these lines, do check out [*A personal essay on Bayes factors*](https://psyarxiv.com/nujy6), [*Between the devil and the deep blue sea: Tensions between scientific judgement and statistical model selection*](https://doi.org/10.1007/s42113-018-0019-z) [@navarroDevilDeepBlue2019] and [*Science, statistics and the problem of "pretty good inference"*](https://youtu.be/tNkmsAOn7aU), a blog, paper and talk by the inimitable [Danielle Navarro](https://djnavarro.net/).
+
+Another point he touches on that's worth emphasizing: *the debate of frequentists vs bayesians is over*. It's the boomer debate of the moment, and most statisticians are not engaged in any debate about it. Bayes is mainstream, and we should act accordingly.
+
+McElreath left us no code or figures to translate in this chapter, but he did give quite the introduction to the topid. He's an engaging speaker and the material in his online lectures does not entirely overlap with that in the text.
+
+## Course Materials
+
+### Lecture
+
+<center>
+
+<iframe width="600" height="350" src="https://www.youtube.com/embed/FdnMWdICdRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+</iframe>
+
+</center>
+
+### Slides
+
+![](static/01_Lecture-Slides_Science-Before-Statistics.pdf){width="600" height="400" fig-align="center"}
 
 ## A few quotes from Lecture 1
 
 ### On statistical testing procetures
 
-> People used to use these permutation methods because it's all they knew how to do. [T]hey just don't work. They don't do what they claim to be able to do. Here's a paper from Hart et al in 2021
-which summarizes this which has been known for decades, actually. These methods, like quadratic assignment procedures, simply do not statistically do what we think they do, and the reason is because there is no clear, unique null.
+> People used to use these permutation methods because it's all they knew how to do. \[T\]hey just don't work. They don't do what they claim to be able to do. Here's a paper from Hart et al in 2021 which summarizes this which has been known for decades, actually. These methods, like quadratic assignment procedures, simply do not statistically do what we think they do, and the reason is because there is no clear, unique null.
 
 ### Golems, DAGs, and generative Models
 
 > To show you in realistic research contexts that this null hypothesis framework is very limiting and that we want to think instead of scientific models and how to introduce those scientific models to data by analyzing them to design golems. Those Golems - at least in this class - will not be designed to test null hypotheses. They'll be designed to do much more. What we're going to need to make those Golems are generative causal models, not just DAGs. DAGs don't have enough details to them to be generative. Generative means you can simulate data from the model, so we're going to start with DAGs, but then we're going to turn them into generative models that can produce synthetic data. And then, we're going to write statistical models that can analyze the synthetic data to begin with to produce certain goals called estimands to answer particular questions. Once we're sure that the model works in principle on the synthetic data designed in light of the specific transparent generative model, we'll introduce the real data to it.
 
-
 ## Changes from Previous Courses
 
-The 2023 offering of the Statistical Rethinking has undergone some changes which focus on increasing the depth of the material covered. Some topics, like how to deal wiht missing data, now appear earlier in the course to better reflect their importance in statistical analysis in practice. To achieve this, the number of examples has been reduced and there is now a greater emphasis on workflow and testing. In addition, the course will cover topics such as interventions and post-stratification, as well as foreground measurement and missing data. Sensitivity analysis will also be included in the revised curriculum. These changes aim to provide a more comprehensive and thorough understanding of statistical concepts and methods. This updated curriculum coincides with the development of a new edition of the book, draft chapters of which may be shared during the course.
+The 2023 offering of the Statistical Rethinking has undergone some changes which focus on increasing the depth of the material covered. Some topics, like how to deal with missing data, now appear earlier in the course to better reflect their importance in statistical analysis in practice. To achieve this, the number of examples has been reduced and there is now a greater emphasis on workflow and testing. In addition, the course will cover topics such as interventions and post-stratification, as well as foreground measurement and missing data. Sensitivity analysis will also be included in the revised curriculum. These changes aim to provide a more comprehensive and thorough understanding of statistical concepts and methods. This updated curriculum coincides with the development of a new edition of the book, draft chapters of which may be shared during the course.
 
 ## Useful Links
 
--  [2023 Course Offering](https://github.com/rmcelreath/stat_rethinking_2023)
--  [Lecture 1 Video - Science before Statistics](https://www.youtube.com/watch?v=FdnMWdICdRs&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=1)
--  [Lecture 1 Slides - Science before Statistics](https://speakerdeck.com/rmcelreath/statistical-rethinking-2023-lecture-01)
+-   [2023 Course Offering](https://github.com/rmcelreath/stat_rethinking_2023)
+-   [Lecture 1 Video - Science before Statistics](https://www.youtube.com/watch?v=FdnMWdICdRs&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=1)
+-   [Lecture 1 Slides - Science before Statistics](https://speakerdeck.com/rmcelreath/statistical-rethinking-2023-lecture-01)
 
 ::: {.callout-note collapse="true"}
-At the end of every chapter, I use the `sessionInfo()` function to help make my results more reproducible.
-## Session Info
+At the end of every chapter, I use the `sessionInfo()` function to help make my results more reproducible. \## Session Info
+
 ```{r}
 sessionInfo()
 ```

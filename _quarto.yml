@@ -3,7 +3,7 @@ project:
 book:
   title: "*Statistical Rethinking* with Tidymodels"
   subtitle: "version 0.0.0.9"
-  description: "This book is an attempt to re-express the code in the second edition of McElreath's textbook, 'Statistical rethinking.' His models are re-fit in brms, plots are redone with ggplot2, and the general data wrangling code predominantly follows the tidyverse style."
+  description: "This book is an attempt to re-express the code in the 2023 edition of McElreath's course, 'Statistical Rethinking.' His models are re-fit with tidymodels using brms, plots are redone with ggplot2, and the general data wrangling code predominantly follows the tidyverse style. It borrows extensively from a previous version of this book authored by Solomon Kurz."
   author: "James H Wade"
   date: 2023-01-08
   twitter-card: true
@@ -12,10 +12,9 @@ book:
     - index.qmd
     - 01.qmd
     - 02.qmd
-    - 03.qmd
     - 99.qmd
     
-bibliography: bib.bib
+bibliography: references.bib
 format:
   html:
     theme: cosmo
