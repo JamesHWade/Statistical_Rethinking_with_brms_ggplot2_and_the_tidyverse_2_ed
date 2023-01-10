@@ -92,7 +92,7 @@ d |>
   theme(legend.position = "none")
 ```
 
-As a quick aside, check out Suzan Baert's blog post [*Data wrangling part 2: Transforming your columns into the right shape*](https://suzan.rbind.io/2018/02/dplyr-tutorial-2/) for an extensive discussion on `dplyr::mutate()` and `tidyr::gather()`. The `tidyr::pivot_longer()` function is an updated variant of `gather()`, which we'll be making extensive use of throughout this project. If you're new to reshaping data with pivoting, check out the vignettes [here](https://tidyr.tidyverse.org/reference/pivot_longer.html) and [here](https://tidyr.tidyverse.org/articles/pivot.html) [@PivotDataWide2020; @Pivoting2020].
+If reshaping data with `pivot_longer()` and `pivot_wider()` is a new concept, check out the vignettes [here](https://tidyr.tidyverse.org/reference/pivot_longer.html) and [here](https://tidyr.tidyverse.org/articles/pivot.html) [@PivotDataWide2020; @Pivoting2020].
 
 Here's the basic structure of the possibilities per marble draw.
 
@@ -127,7 +127,7 @@ If you walk that out a little, you can structure the data required to approach F
 )
 ```
 
-See what I did there with the parentheses? If you assign a value to an object in **R** (e.g., `dog <- 1`) and just hit return, nothing will immediately pop up in the [console](https://r4ds.had.co.nz/introduction.html#rstudio). You have to actually execute `dog` before **R** will return `1`. But if you wrap the code within parentheses (e.g., `(dog <- 1)`), **R** will perform the assignment and return the value as if you had executed `dog`.
+See what I did there with the parentheses? If you assign a value to an object in **R** (e.g., `dog <- 1`) and just hit return, nothing will immediately pop up in the [console](https://r4ds.hadley.nz/intro.html#rstudio). You have to actually execute `dog` before **R** will return `1`. But if you wrap the code within parentheses (e.g., `(dog <- 1)`), **R** will perform the assignment and return the value as if you had executed `dog`.
 
 But we digress. Here's the initial plot.
 
@@ -1292,6 +1292,37 @@ b2.1 <-
 b2.1
 ```
 
+The model output from **brms** looks like so.
+
+```{r}
+print(b2.1)
+```
+
+There's a lot going on in that output, which we'll start to clarify in \[Chapter 4\]\[Geocentric Models\]. For now, focus on the 'Intercept' line. As we'll also learn in Chapter 4, the intercept of a typical regression model with no predictors is the same as its mean. In the special case of a model using the binomial likelihood, the mean is the probability of a 1 in a given trial, $\theta$.
+
+Also, with **brms**, there are many ways to summarize the results of a model. The `brms::posterior_summary()` function is an analogue to `rethinking::precis()`. We will, however, need to use `round()` to reduce the output to a reasonable number of decimal places.
+
+```{r}
+posterior_summary(b2.1) |>
+  round(digits = 2)
+```
+
+The `b_Intercept` row is the probability. Don't worry about the second line, for now. We'll cover the details of **brms** model fitting in later chapters. To finish up, why not plot the results of our model and compare them with those from `rethinking::quap()`, above?
+
+```{r}
+#| fig-width: 3
+#| fig-height: 2.75
+as_draws_df(b2.1) |>
+  mutate(n = "n = 36") |>
+  ggplot(aes(x = b_Intercept)) +
+  geom_density(fill = "black") +
+  scale_x_continuous("proportion water", limits = c(0, 1)) +
+  theme(panel.grid = element_blank()) +
+  facet_wrap(~n)
+```
+
+If you're still confused, cool. This is just a preview. We'll start walking through fitting models with **brms** in \[Chapter 4\]\[Geocentric models\] and we'll learn a lot about regression with the binomial likelihood in \[Chapter 11\]\[God Spiked the Integers\].
+
 ## rethinking
 
 ```{r}
@@ -1299,7 +1330,7 @@ b2.1
 library(rethinking)
 m2.1 <- quap(
   alist(
-    W ~ dbinom( W + L, p),
+    W ~ dbinom(W + L, p),
     p ~ dunif(0, 1)
   ),
   data = list(W = 24, L = 12)
@@ -1338,36 +1369,24 @@ precis(m2.1)
 #   fit(data = dat)
 --->
 
-The model output from **brms** looks like so.
+### Adding Misclassification
+
+In lecture “bonus” material, McElreath asks how we could model the proportion of water on the globe but with a twist. The twist is that for x proportion of the time, the outsome is misclassified. He codes this as
 
 ```{r}
-print(b2.1)
+sim_globe <- function(p = 0.7, N = 9, x = 0.1) {
+  true_sample <- sample(c("W", "L"), size = N, prob = c(p, 1 - p), replace = TRUE)
+  obs_sample <- ifelse(runif(N) < x,
+                       ifelse(true_sample == "W", "L", "W"), # error
+                       true_sample)
+  return(obs_sample)
+}
+
+sim_globe()
 ```
 
-There's a lot going on in that output, which we'll start to clarify in \[Chapter 4\]\[Geocentric Models\]. For now, focus on the 'Intercept' line. As we'll also learn in Chapter 4, the intercept of a typical regression model with no predictors is the same as its mean. In the special case of a model using the binomial likelihood, the mean is the probability of a 1 in a given trial, $\theta$.
+The **brms** package can handle missing values or measurement error using the `mi()` function. See [this vignette](https://paul-buerkner.github.io/brms/articles/brms_missings.html) on handling missing values for more details. I have not yet been able to get this model to work with **brms** and have [asked the Stan community for help](https://discourse.mc-stan.org/t/misclassification-or-measurement-error-for-binomial-model-with-brms-statistical-rethinking-2023/30012). I will update this page if I figure out how to make it work.
 
-Also, with **brms**, there are many ways to summarize the results of a model. The `brms::posterior_summary()` function is an analogue to `rethinking::precis()`. We will, however, need to use `round()` to reduce the output to a reasonable number of decimal places.
-
-```{r}
-posterior_summary(b2.1) |>
-  round(digits = 2)
-```
-
-The `b_Intercept` row is the probability. Don't worry about the second line, for now. We'll cover the details of **brms** model fitting in later chapters. To finish up, why not plot the results of our model and compare them with those from `rethinking::quap()`, above?
-
-```{r}
-#| fig-width: 3
-#| fig-height: 2.75
-as_draws_df(b2.1) |>
-  mutate(n = "n = 36") |>
-  ggplot(aes(x = b_Intercept)) +
-  geom_density(fill = "black") +
-  scale_x_continuous("proportion water", limits = c(0, 1)) +
-  theme(panel.grid = element_blank()) +
-  facet_wrap(~n)
-```
-
-If you're still confused, cool. This is just a preview. We'll start walking through fitting models with **brms** in \[Chapter 4\]\[Geocentric models\] and we'll learn a lot about regression with the binomial likelihood in \[Chapter 11\]\[God Spiked the Integers\].
 
 ::: {.callout-note collapse="true"}
 ## Session Info
